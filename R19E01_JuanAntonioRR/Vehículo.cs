@@ -19,11 +19,15 @@ namespace R19E01_JuanAntonioRR
         private const float PRECIO_MIN = 1000;
         private const float PRECIO_MAX = 100000;
         private const float PRECIO_DEF = 0;
+        private const float DESCUENTO = 0.10F;
+
         // CAMPOS | MIEMBROS
         private string _marca;
         private string _modelo;
         private string _tipoVehiculo;
         private float _precioContado;
+
+        // private float _precioFinanciado; NO ES NECESARIO YA QUE ES UN CÁLCULO QUE SE LE VA A PASAR EL PRECIO AL CONTADO
 
         #region CONSTRUCTORES
 
@@ -109,12 +113,24 @@ namespace R19E01_JuanAntonioRR
                 _precioContado = value;
             }
         }
-
-       
+        public float PrecioFinanciado
+        {
+            get
+            {
+                return CalcularPrecioFinanciado();
+            }
+        }     
         #endregion
 
         #region MÉTODOS PÚBLICOS
+        public float CalcularPrecioFinanciado()
+        {
+            float precioF;
 
+            precioF = PrecioContado - PrecioContado * DESCUENTO;
+
+            return precioF;
+        }
         #endregion
 
         #region MÉTODOS PRIVADOS

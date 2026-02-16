@@ -4,17 +4,10 @@
     {
         static void Main(string[] args)
         {
-            // CONSTANTES
+            Vehículo coche = new Vehículo();
 
-            // VARIABLES
-
-            // INICIALIZACIÓN
-
-            // ENTRADA 
-
-            // PROCESO
-
-            // SALIDA
+            coche.Marca = "lajfkljasdjf";
+            
         }
     }
 }
