@@ -26,6 +26,8 @@ namespace R19E01_JuanAntonioRR
         private string _modelo;
         private string _tipoVehiculo;
         private float _precioContado;
+        private DateTime _fechaMatriculacion;
+        
 
         // private float _precioFinanciado; NO ES NECESARIO YA QUE ES UN CÁLCULO QUE SE LE VA A PASAR EL PRECIO AL CONTADO
 
@@ -120,6 +122,23 @@ namespace R19E01_JuanAntonioRR
                 return CalcularPrecioFinanciado();
             }
         }     
+        public DateTime FechaMatriculacion
+        {
+            get
+            {
+                
+                return _fechaMatriculacion;
+            }
+            set
+            {
+                // Validación Fecha Matriculación
+
+                ValidarFecha(value);
+                _fechaMatriculacion = value;
+            }
+        }
+
+       
         #endregion
 
         #region MÉTODOS PÚBLICOS
@@ -185,6 +204,15 @@ namespace R19E01_JuanAntonioRR
             {
                 throw new Exception("ERROR: El precio excede el máximo permitido.");
             }
+        }
+        private void ValidarFecha(DateTime fecha)
+        {
+            if (fecha > DateTime.Now)
+            {
+                throw new Exception("ERROR: El vehículo no puede estar matriculado posterior a la fecha actual. ");
+
+            }
+            if(fecha)
         }
         #endregion
     }
