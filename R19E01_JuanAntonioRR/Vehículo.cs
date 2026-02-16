@@ -16,12 +16,14 @@ namespace R19E01_JuanAntonioRR
         private const byte TAM_MIN_MODELO = 4;
         private const string TIPO_VEH_DEF = "Turismo";
         private const string TIPO_VEH = "TURISMO FURGONETA CAMIÓN";
-
+        private const float PRECIO_MIN = 1000;
+        private const float PRECIO_MAX = 100000;
+        private const float PRECIO_DEF = 0;
         // CAMPOS | MIEMBROS
         private string _marca;
         private string _modelo;
         private string _tipoVehiculo;
-        
+        private float _precioContado;
 
         #region CONSTRUCTORES
 
@@ -91,6 +93,24 @@ namespace R19E01_JuanAntonioRR
                 _tipoVehiculo = value;
             }
         }
+        public float PrecioContado
+        {
+            get
+            {
+                if (_precioContado == PRECIO_DEF)
+                {
+                    throw new Exception("ERROR: El valor introducido es menor al permitido.");
+                }
+                return _precioContado;
+            }
+            set
+            {
+                ValidarPrecioContado(value);
+                _precioContado = value;
+            }
+        }
+
+       
         #endregion
 
         #region MÉTODOS PÚBLICOS
@@ -98,8 +118,6 @@ namespace R19E01_JuanAntonioRR
         #endregion
 
         #region MÉTODOS PRIVADOS
-
-      
         private void ValidarCadena(string dato, byte tamMax, byte tamMin)
         {
             // 1.- Nulo o vacío
@@ -139,6 +157,17 @@ namespace R19E01_JuanAntonioRR
                 {
                     throw new ArgumentException("ERROR: Signos de puntuación no permitidos.");
                 }
+            }
+        }
+        private void ValidarPrecioContado(float precioContado)
+        {
+            if (precioContado < PRECIO_MIN)
+            {
+                throw new Exception("ERROR: El precio introducido es menor al permitido");
+            }
+            if(precioContado > PRECIO_MAX)
+            {
+                throw new Exception("ERROR: El precio excede el máximo permitido.");
             }
         }
         #endregion
