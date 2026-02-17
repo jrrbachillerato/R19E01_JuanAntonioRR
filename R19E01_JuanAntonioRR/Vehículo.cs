@@ -20,6 +20,7 @@ namespace R19E01_JuanAntonioRR
         private const float PRECIO_MAX = 100000;
         private const float PRECIO_DEF = 0;
         private const float DESCUENTO = 0.10F;
+        private const int LIMITE_AÑOS = 10;
 
         // CAMPOS | MIEMBROS
         private string _marca;
@@ -133,12 +134,10 @@ namespace R19E01_JuanAntonioRR
             {
                 // Validación Fecha Matriculación
 
-                ValidarFecha(value);
+                ValidarFechaMatriculacion(value);
                 _fechaMatriculacion = value;
             }
         }
-
-       
         #endregion
 
         #region MÉTODOS PÚBLICOS
@@ -205,14 +204,33 @@ namespace R19E01_JuanAntonioRR
                 throw new Exception("ERROR: El precio excede el máximo permitido.");
             }
         }
-        private void ValidarFecha(DateTime fecha)
+        private void ValidarFechaMatriculacion(DateTime fecha)
         {
-            if (fecha > DateTime.Now)
+            // RECURSOS
+            DateTime fechaActual = DateTime.Today;
+
+            // 0.- Comprobar el parámetro
+
+            //if (fecha == null)
+            //{
+            //    throw new Exception("ERROR: No se ha establecido una fecha");
+            //}
+
+            // Nunca se ejecutará el throw porque un DateTime nunca será Null
+
+            // 1.- Fecha posterior a la actual
+            if (fecha > fechaActual)
             {
                 throw new Exception("ERROR: El vehículo no puede estar matriculado posterior a la fecha actual. ");
-
             }
-            if(fecha)
+
+            // 2.- Coche con una matriculación con un límite establecido 
+            fechaActual = fechaActual.AddYears(-LIMITE_AÑOS);
+
+            if (fechaActual>fecha)
+            {
+                throw new Exception("ERROR: El vehículo no puede tener más de 10 años.");
+            }
         }
         #endregion
     }
