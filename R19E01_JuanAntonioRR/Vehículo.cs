@@ -13,12 +13,14 @@ namespace R19E01_JuanAntonioRR
         private const byte TAM_MIN_MARCA = 3;
         private const string MARCA_MODELO_DEF = "Desconocido";
         private const byte TAM_MAX_MODELO = 25;
-        private const byte TAM_MIN_MODELO = 4;
+        private const byte TAM_MIN_MODELO = 2;
         private const string TIPO_VEH_DEF = "Turismo";
         private const string TIPO_VEH = "TURISMO FURGONETA CAMIÓN";
+        
         private const float PRECIO_MIN = 1000;
         private const float PRECIO_MAX = 100000;
         private const float PRECIO_DEF = 0;
+       
         private const float DESCUENTO = 0.10F;
         private const int LIMITE_AÑOS = 10;
 
@@ -29,11 +31,28 @@ namespace R19E01_JuanAntonioRR
         private float _precioContado;
         private DateTime _fechaMatriculacion;
         
-
         // private float _precioFinanciado; NO ES NECESARIO YA QUE ES UN CÁLCULO QUE SE LE VA A PASAR EL PRECIO AL CONTADO
 
         #region CONSTRUCTORES
 
+        public Vehículo()
+        {
+            _marca = MARCA_MODELO_DEF;
+            _modelo = MARCA_MODELO_DEF;
+            _tipoVehiculo= "TURISMO";
+            _precioContado = PRECIO_DEF;
+        }
+        public Vehículo(string marca,string modelo) // Constructor por defecto instanciando solo la marca y el modelo, los demás atributos se mantienen por defecto.
+        {
+            Marca = marca;          // Para ello se utiliza la propiedad para que no perder seguridad con datos de fuera.
+            Modelo = modelo;
+
+            _marca = MARCA_MODELO_DEF;
+            _modelo = MARCA_MODELO_DEF;
+            _tipoVehiculo = "TURISMO";
+            _precioContado = PRECIO_DEF;
+
+        }
         #endregion
 
         #region PROPIEDADES
@@ -140,17 +159,6 @@ namespace R19E01_JuanAntonioRR
         }
         #endregion
 
-        #region MÉTODOS PÚBLICOS
-        public float CalcularPrecioFinanciado()
-        {
-            float precioF;
-
-            precioF = PrecioContado - PrecioContado * DESCUENTO;
-
-            return precioF;
-        }
-        #endregion
-
         #region MÉTODOS PRIVADOS
         private void ValidarCadena(string dato, byte tamMax, byte tamMin)
         {
@@ -233,5 +241,17 @@ namespace R19E01_JuanAntonioRR
             }
         }
         #endregion
+
+        #region MÉTODOS PÚBLICOS
+        public float CalcularPrecioFinanciado()
+        {
+            float precioF;
+
+            precioF = PrecioContado - PrecioContado * DESCUENTO;
+
+            return precioF;
+        }
+        #endregion
+
     }
 }
