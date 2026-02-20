@@ -19,18 +19,36 @@ namespace R19E01_JuanAntonioRR
             byte option;
 
             // INICIALIZACIÓN
-            option = 0;
+            option = 1;
             // ENTRADA
-
+            Console.WriteLine();
             // PROCESO
 
             // SALIDA
             return option;
         }
+
+
         #endregion
 
         #region MÉTODOS DE SALIDA
+        public static void MostrarListaCoches(Vehículo[] lista)
+        {
+            Console.Clear();
 
+            Console.WriteLine("\tLISTADO DE VEHÍCULOS");
+             
+            for(int i = 0; i < lista.Length; i++)
+            {
+                Console.WriteLine($"\t{i+1} - {lista[i].Marca} {lista[i].Modelo}");
+            }
+            Console.ReadLine();
+        }
+
+        public static void VehiculoSeleccionado(Vehículo[] listado)
+        {
+            // TODO: Implementar método VehiculoSeleccionado
+        }
         #endregion
     }
 }

@@ -47,8 +47,10 @@ namespace R19E01_JuanAntonioRR
             Marca = marca;          // Para ello se utiliza la propiedad para que no perder seguridad con datos de fuera.
             Modelo = modelo;
 
-            _marca = MARCA_MODELO_DEF;
-            _modelo = MARCA_MODELO_DEF;
+
+            // HE COPIADO Y PEGADO y daba error en este punto al inicializarse la marca y modelo por defecto, lo que sobreescribia la marca y modelo "Ferrari" "Testarrosa"
+            //_marca = MARCA_MODELO_DEF;
+            //_modelo = MARCA_MODELO_DEF;
             _tipoVehiculo = "TURISMO";
             _precioContado = PRECIO_DEF;
 

@@ -14,10 +14,10 @@ namespace R19E01_JuanAntonioRR
             Vehículo[] concesionario;
 
             bool salir = false;
-            byte opcion = 0;      // 0 - Salir
+            byte opcion = 0;      // 0 - Salir    
 
             // INICIALIZACIÓN
- 
+
             // 1.- Carga Inicial de Vehículos
             concesionario = new Vehículo[NUM_VEHICULOS];
             CargarVehiculos(concesionario);              // Se pasa el concesionario por referencia para modificarlo en su lugar de memoria.
@@ -42,12 +42,13 @@ namespace R19E01_JuanAntonioRR
 
                     // 2.2.2.- Mostrar listado de Vehículos
                     case 1:
-                        // TODO: Implementación de la acción mostrar listado
+                        Controlador.MostrarListado(concesionario);
+          
                         break;
 
                     // 2.2.3.- Mostrar datos de un Vehículo
                     case 2:
-                        // TODO: Implementación de la acción mostrar datos de un Vehículo
+                        Controlador.MostrarVehiculo(concesionario);
                         break;
 
                 }
@@ -55,13 +56,6 @@ namespace R19E01_JuanAntonioRR
                 // SALIDA
             }
             while (!salir);
-
-
-
-
-
-
-
         }
 
         private static void CargarVehiculos(Vehículo[] listaVehiculos)
@@ -71,6 +65,7 @@ namespace R19E01_JuanAntonioRR
             coche = new Vehículo();
 
             // Cargar Vehículo 1
+
             coche.Marca = "Seat";
             coche.Modelo = "Altea";
             coche.PrecioContado = 18500f;
@@ -78,6 +73,7 @@ namespace R19E01_JuanAntonioRR
             listaVehiculos[0] = coche;     // Se almacena el vehículo en el array.
 
             // Cargar Vehículo 2
+            coche = new Vehículo();
             coche.Marca = "Wolswagen";
             coche.Modelo = "Golf";
             coche.PrecioContado = 23000;
