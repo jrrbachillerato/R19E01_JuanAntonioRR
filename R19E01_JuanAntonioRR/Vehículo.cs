@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace R19E01_JuanAntonioRR
 {
+    public enum TipoVehiculos : byte { Turismo, Furgoneta, Camion }
+    public enum TipoCombustible : byte { Gasoil, Gasolina, Electrico, Hibrido }
+    public enum EstadoVehiculo : byte { Nuevo, Ocasion, SegundaMano };
     public class Vehículo
     {
         // CONSTANTES
@@ -27,7 +30,13 @@ namespace R19E01_JuanAntonioRR
         // CAMPOS | MIEMBROS
         private string _marca;
         private string _modelo;
-        private string _tipoVehiculo;
+        // private string _tipoVehiculo;
+
+        // Usando enumeración
+        public TipoVehiculos Tipo;
+        public TipoCombustible Combustible;
+        public EstadoVehiculo Estado;
+
         private float _precioContado;
         private DateTime _fechaMatriculacion;
         
@@ -39,7 +48,11 @@ namespace R19E01_JuanAntonioRR
         {
             _marca = MARCA_MODELO_DEF;
             _modelo = MARCA_MODELO_DEF;
-            _tipoVehiculo= "TURISMO";
+            // _tipoVehiculo= "TURISMO";   CAMPO PRIVADO DE LA VERSIÓN ANTERIOR
+            Tipo = TipoVehiculos.Turismo;
+            Combustible = TipoCombustible.Gasoil;
+            Estado = EstadoVehiculo.Nuevo;
+
             _precioContado = PRECIO_DEF;
         }
         public Vehículo(string marca,string modelo) // Constructor por defecto instanciando solo la marca y el modelo, los demás atributos se mantienen por defecto.
@@ -51,8 +64,13 @@ namespace R19E01_JuanAntonioRR
             // HE COPIADO Y PEGADO y daba error en este punto al inicializarse la marca y modelo por defecto, lo que sobreescribia la marca y modelo "Ferrari" "Testarrosa"
             //_marca = MARCA_MODELO_DEF;
             //_modelo = MARCA_MODELO_DEF;
-            _tipoVehiculo = "TURISMO";
+
+            // _tipoVehiculo = "TURISMO";  CAMPO PRIVADO DE LA VERSIÓN ANTERIOR
+
+            Tipo = TipoVehiculos.Turismo;
             _precioContado = PRECIO_DEF;
+            Combustible = TipoCombustible.Gasoil;
+            Estado = EstadoVehiculo.Nuevo;
 
         }
         #endregion
@@ -104,23 +122,26 @@ namespace R19E01_JuanAntonioRR
                 _modelo= value;
             }
         }
-        public string TipoVehiculo
-        {
-            get
-            {
-                return _tipoVehiculo;
-            }
-            set
-            {
-                // Validación del tipo de Vehículo
-                value = value.ToUpper();
-                if (!TIPO_VEH.Contains(value))
-                {
-                    throw new Exception("ERROR: Tipo de vehículo no valido.");
-                }
-                _tipoVehiculo = value;
-            }
-        }
+
+        // PROPIEDAD DE LA VERSIÓN ANTERIOR
+
+        //public string TipoVehiculo
+        //{
+        //    get
+        //    {
+        //        return _tipoVehiculo;
+        //    }
+        //    set
+        //    {
+        //        // Validación del tipo de Vehículo
+        //        value = value.ToUpper();
+        //        if (!TIPO_VEH.Contains(value))
+        //        {
+        //            throw new Exception("ERROR: Tipo de vehículo no valido.");
+        //        }
+        //        _tipoVehiculo = value;
+        //    }
+        //}
         public float PrecioContado
         {
             get

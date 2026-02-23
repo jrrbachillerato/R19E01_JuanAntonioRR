@@ -14,7 +14,7 @@ namespace R19E01_JuanAntonioRR
             Vehículo[] concesionario;
 
             bool salir = false;
-            byte opcion = 0;      // 0 - Salir    
+            byte opcion=0;      // 0 - Salir    
 
             // INICIALIZACIÓN
 
@@ -100,9 +100,14 @@ namespace R19E01_JuanAntonioRR
             listaVehiculos[2] = coche;
 
             // Cargar Vehículo 4
-            coche = new Vehículo("BMW", "M3");
+            coche = new Vehículo("Ford", "Transit");
 
             coche.PrecioContado = 58500f;
+
+            // coche.TipoVehículo="FURGONETA"
+            coche.Tipo = TipoVehiculos.Furgoneta;
+            coche.Combustible = TipoCombustible.Gasolina;
+            coche.Estado = EstadoVehiculo.Nuevo;
 
             listaVehiculos[3] = coche;
 
