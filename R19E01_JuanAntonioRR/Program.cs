@@ -21,22 +21,34 @@ namespace R19E01_JuanAntonioRR
             // 1.- Carga Inicial de Vehículos
             concesionario = new Vehículo[NUM_VEHICULOS];
             CargarVehiculos(concesionario);              // Se pasa el concesionario por referencia para modificarlo en su lugar de memoria.
+            
             // 2.- Acciones del Programa
             do
             {
                 // ENTRADA
 
                 // 2.1.- Seleccionar la acción a realizar
-                opcion = Interfaz.ObtenerOpcionMenu();
+                try
+                {
+                    opcion = Interfaz.ObtenerOpcionMenu();
+                }
+                catch(Exception error)
+                {
+                    Console.WriteLine(error.Message);
+                }
+
 
                 // PROCESO
 
                 // 2.2.- Realizar la acción según la opción seleccionada
+
+                Console.Clear();
                 switch (opcion)
                 {
                     // 2.2.1.- Salida del programa
-
+                    
                     case 0:
+                        Console.WriteLine("Gracias por usar nuestra aplicación.");
                         salir = true;
                         break;
 
@@ -52,7 +64,7 @@ namespace R19E01_JuanAntonioRR
                         break;
 
                 }
-
+                
                 // SALIDA
             }
             while (!salir);
